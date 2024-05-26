@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comentarios Anónimos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .comment-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .comment-form {
+            margin-bottom: 20px;
+        }
+        .comment-form input, .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .comment-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+        .comment-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="comment-box">
+        <h2>Deja tu comentario</h2>
+        <form class="comment-form" id="commentForm">
+            <input type="text" name="name" id="name" placeholder="Tu nombre" required>
+            <input type="email" name="email" id="email" placeholder="Tu correo electrónico" required>
+            <textarea name="comment" id="comment" rows="4" placeholder="Tu comentario" required></textarea>
+            <button type="submit">Enviar comentario</button>
+        </form>
+    </div>
+
+    <div class="comments-section">
+        <h2>Comentarios</h2>
+        <div id="comments">
+            <!-- Los comentarios serán cargados desde configuracion.php -->
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('commentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var formData = new FormData(this);
+
+            fetch('https://tu-dominio-de-000webhost/configuracion.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('comments').innerHTML = data;
+                document.getElementById('commentForm').reset();
+            });
+        });
+
+        // Cargar comentarios desde configuracion.php al cargar la página
+        fetch('https://tu-dominio-de-000webhost/configuracion.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('comments').innerHTML = data;
+            });
+    </script>
+
+</body>
+</html>

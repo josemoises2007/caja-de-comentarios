@@ -80,14 +80,14 @@
         fetch('https://jakearround.000webhostapp.com/comentarios/configuracion.php')
             .then(response => response.text())
             .then(data => {
-                document.getElementById('comment-box').innerHTML = data;
+                document.getElementById('comments').innerHTML = data;
             });
     </script>
 <script>
     fetch('https://jakearround.000webhostapp.com/comentarios/configuracion.php', {headers: {"x-test": "algum valor"}})
         .then(res => res.json())
-        .then(res => document.getElementById('comment-box').textContent = res.text)
-        .catch(error => document.getElementById('comment-box').textContent = error.message);
+        .then(res => document.getElementById('comments').textContent = res.text)
+        .catch(error => document.getElementById('comments').textContent = error.message);
 </script>
 </body>
 </html>

@@ -4,4 +4,4 @@ header("Access-Control-Allow-Headers: content-type, x-type");</code> en el php d
         .then(res => res.json())
         .then(res => document.getElementById('comments').textContent = res.text)
         .catch(error => document.getElementById('comments').textContent = error.message);
-</script></code>en el codigo html y asi amigos es como se importa sin violar las leyes si quieres son libres en copiarlo.
+</script></code>en el codigo html y asi amigos es como se importa sin violar las leyes, si quieren, son libres en copiarlo.

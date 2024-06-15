@@ -91,14 +91,12 @@
 </script>
         <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Obtener todos los elementos de comentario
-            const commentBoxes = document.querySelectorAll('.comments-section .comment-box');
-
-            commentBoxes.forEach(box => {
-                const name = box.querySelector('h3').textContent.trim();
-                // Si el nombre está vacío, eliminar el comentario
-                if (!name) {
-                    box.remove();
+            const comments = document.querySelectorAll(".comment-box");
+            comments.forEach(comment => {
+                const name = comment.querySelector("h3").innerText.trim();
+                const text = comment.querySelector("p").innerText.trim();
+                if (!name && !text) {
+                    comment.classList.add("hidden");
                 }
             });
         });

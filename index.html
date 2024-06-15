@@ -89,5 +89,20 @@
         .then(res => document.getElementById('comments').textContent = res.text)
         .catch(error => document.getElementById('comments').textContent = error.message);
 </script>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Obtener todos los elementos de comentario
+            const commentBoxes = document.querySelectorAll('.comments-section .comment-box');
+
+            commentBoxes.forEach(box => {
+                const name = box.querySelector('h3').textContent.trim();
+                // Si el nombre está vacío, eliminar el comentario
+                if (!name) {
+                    box.remove();
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>

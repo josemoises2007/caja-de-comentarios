@@ -65,7 +65,7 @@
 
             var formData = new FormData(this);
 
-            fetch('https://jakearround.000webhostapp.com/comentarios/configuracion.php', {
+            fetch('https://ajudapratodos.000webhostapp.com/comentariostext/carrega_comentarios.php', {
                 method: 'POST',
                 body: formData
             })
@@ -77,14 +77,14 @@
         });
 
         // Cargar comentarios desde configuracion.php al cargar la página
-        fetch('https://jakearround.000webhostapp.com/comentarios/configuracion.php')
+        fetch('https://ajudapratodos.000webhostapp.com/comentariostext/carrega_comentarios.php')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('comments').innerHTML = data;
             });
     </script>
 <script>
-    fetch('https://jakearround.000webhostapp.com/comentarios/configuracion.php', {headers: {"x-test": "algum valor"}})
+    fetch('https://ajudapratodos.000webhostapp.com/comentariostext/processa_comentario.php', {headers: {"x-test": "algum valor"}})
         .then(res => res.json())
         .then(res => document.getElementById('comments').textContent = res.text)
         .catch(error => document.getElementById('comments').textContent = error.message);
